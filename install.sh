@@ -88,7 +88,6 @@ iptables -t mangle -A OUTPUT -p gre -j RETURN
 iptables -t mangle -A OUTPUT -j MARK --set-mark 100
 
 # 4. Fix Packet Size & NAT
-iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -o \$TUN_NAME -j TCPMSS --clamp-mss-to-pmtu
 iptables -t nat -A POSTROUTING -o \$TUN_NAME -j MASQUERADE
 
 # Routing
